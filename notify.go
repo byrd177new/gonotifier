@@ -21,7 +21,7 @@ func (n notifier) Notify(ctx context.Context, message Message) error {
 
 	notificationKey := fmt.Sprintf("%s:%v", message.UserID, time.Now())
 	if n.issuer != "" {
-		notificationKey = fmt.Sprintf("%s:%s", n.issuer, notificationKey)
+		notificationKey = fmt.Sprintf("notification/%s:%s", n.issuer, notificationKey)
 	}
 
 	kafkaMessage := kafka.Message{
